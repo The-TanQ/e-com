@@ -1,14 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Paper, Stepper, Step, StepLabel, Typography, CircularProgress, Divider, Button, CssBaseline } from '@material-ui/core';
 import { Link, useNavigate } from 'react-router-dom';
-import React, { useState, useEffect } from 'react';
-import { Paper, Stepper, Step, StepLabel, Typography, CircularProgress, Divider, Button, CssBaseline } from '@material-ui/core';
-import { Link, useNavigate } from 'react-router-dom';
 
 import useStyles from './styles';
 import AddressForm from '../AddressForm';
 import PaymentForm from '../PaymentForm';
-import { commerce } from '../../../lib/commerce';
 import { commerce } from '../../../lib/commerce';
 
 const steps = ['Shipping address', 'Payment details'];
@@ -68,22 +64,11 @@ const Checkout = ({ cart, order, onCaptureCheckout, error }) => {
       <br />
       <Button component={Link} to='/' variant='outlined' type='button' >Back to Home</Button>
     </>
-    );
-
-  if (error) {
-    <>
-      <Typography variant='h5'>Error: {error}</Typography>
-      <br />
-      <Button component={Link} to='/' variant='outlined' type='button' >Back to Home</Button>
-    </>
   }
 
   const Form = () => activeStep === 0
     ? <AddressForm checkoutToken={checkoutToken} next={next} />
     : <PaymentForm shippingData={shippingData} checkoutToken={checkoutToken} nextStep={nextStep} backStep={backStep} onCaptureCheckout={onCaptureCheckout} />
-    ? <AddressForm checkoutToken={checkoutToken} next={next} />
-    : <PaymentForm shippingData={shippingData} checkoutToken={checkoutToken} nextStep={nextStep} backStep={backStep} onCaptureCheckout={onCaptureCheckout} />
-
 
   return (
     <>
